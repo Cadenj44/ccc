@@ -1,8 +1,8 @@
-.link {
+Link {
     color: #ffffff;
     padding: 0px 15px;
 }
 
-.link:hover {
+Link:hover {
     color: #FD9623
 }
