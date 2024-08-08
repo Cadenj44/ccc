@@ -1,0 +1,8 @@
+h1 {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    text-align: center;
+    padding-top: 30px;
+}
+
