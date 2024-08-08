@@ -99,14 +99,14 @@ import * as React from 'react';
 import { useState } from 'react';
 import { AppBar, Box, Toolbar, IconButton, Drawer, Divider } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-// import DragHandleIcon from '@mui/icons-material/DragHandle';
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from '../assets/cccPin.PNG';
-import { Link } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import './appBar.css';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
 
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -124,23 +124,20 @@ export default function Navbar() {
 
           {/* Button Display */}
           <Box
-            // style={{ marginLeft: 'auto', textDecoration: 'none', color: '#ffffff' }}
             sx={{
-              justifyContent: 'flex-end',
-              flexDirection: 'row',
               display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' },
-              textDecoration: 'none',
-              marginLeft: 'auto',
-              color: '#ffffff'
+              justifyContent: 'flex-end',
+              flexGrow: 1,  // Ensure this Box takes up all available space
+              alignItems: 'center',
             }}
           >
-            <Link to='/' className='link'>Home</Link>
-            <Link to='/aboutus' className='link'>About Us</Link>
-            <Link to='/sermons' className='link'>Sermons</Link>
-            <Link to='/events' className='link'>Events</Link>
-            <Link to='/onlinegiving' className='link'>Online Giving</Link>
-            <Link to='/visitus' className='link'>Visit Us</Link>
-            <Link to='/blog' className='link'>Blog</Link>
+            <NavLink to='/' className={`link ${location.pathname === '/' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Home</NavLink>
+            <NavLink to='/aboutus' className={`link ${location.pathname === '/aboutus' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>About Us</NavLink>
+            <NavLink to='/sermons' className={`link ${location.pathname === '/sermons' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Sermons</NavLink>
+            <NavLink to='/events' className={`link ${location.pathname === '/events' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Events</NavLink>
+            <NavLink to='/onlinegiving' className={`link ${location.pathname === '/onlinegiving' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Online Giving</NavLink>
+            <NavLink to='/visitus' className={`link ${location.pathname === '/visitus' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Visit Us</NavLink>
+            <NavLink to='/blog' className={`link ${location.pathname === '/blog' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Blog</NavLink>
           </Box>
 
           {/* Hamburger Icon */}
@@ -175,18 +172,18 @@ export default function Navbar() {
               </IconButton>
               <Divider sx={{ mb: 2 }} />
               <Box sx={{ 
-                mb: 2,
                 display: 'flex',
                 flexDirection: 'column',
-                textDecoration: 'none',
+                gap: '30px',
+                justifyContent: 'center'
                 }}>
-                <Link to='/' className='link'>Home</Link>
-                <Link to='/aboutus' className='link'>About Us</Link>
-                <Link to='/sermons' className='link'>Sermons</Link>
-                <Link to='/events' className='link'>Events</Link>
-                <Link to='/onlinegiving' className='link'>Online Giving</Link>
-                <Link to='/visitus' className='link'>Visit Us</Link>
-                <Link to='/blog' className='link'>Blog</Link>
+                <NavLink to='/' className={`link ${location.pathname === '/' ? 'active' : ''}`} >Home</NavLink>
+                <NavLink to='/aboutus' className={`link ${location.pathname === '/aboutus' ? 'active' : ''}`} >About Us</NavLink>
+                <NavLink to='/sermons' className={`link ${location.pathname === '/sermons' ? 'active' : ''}`} >Sermons</NavLink>
+                <NavLink to='/events' className={`link ${location.pathname === '/events' ? 'active' : ''}`} >Events</NavLink>
+                <NavLink to='/onlinegiving' className={`link ${location.pathname === '/onlinegiving' ? 'active' : ''}`} >Online Giving</NavLink>
+                <NavLink to='/visitus' className={`link ${location.pathname === '/visitus' ? 'active' : ''}`} >Visit Us</NavLink>
+                <NavLink to='/blog' className={`link ${location.pathname === '/blog' ? 'active' : ''}`}>Blog</NavLink>
               </Box>
             </Box>
           </Drawer>

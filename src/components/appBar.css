@@ -1,8 +1,88 @@
-Link {
-    color: #ffffff;
+/* .link {
+    background-image: linear-gradient(
+      to right,
+      #FD9623,
+      #FD9623 50%,
+      #ffffff 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
     padding: 0px 15px;
-}
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .link:before {
+    content: '';
+    background: #FD9623;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .link:hover {
+   background-position: 0;
+  }
+  
+  .link:hover::before {
+    width:100%;
+  }
 
-Link:hover {
-    color: #FD9623
-}
+  .link.active {
+    color: #FD9623;
+  } */
+  
+  .link {
+    background-image: linear-gradient(
+      to right,
+      #FD9623,
+      #FD9623 50%,
+      #ffffff 50%
+    );
+    background-size: 200% 100%;
+    background-position: -100%;
+    display: inline-block;
+    padding: 0px 15px;
+    position: relative;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none; /* Remove any default underline */
+  }
+  
+  .link:before {
+    content: '';
+    background: #FD9623;
+    display: block;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    transition: width 0.3s ease-in-out;
+  }
+  
+  .link:hover {
+    background-position: 0;
+  }
+  
+  .link:hover::before {
+    width: 100%;
+  }
+
+  .link.active {
+    background-position: 0;
+    -webkit-text-fill-color: #FD9623; /* Keep text color */
+  }
+
+  .link.active:before {
+    width: 100%; /* Keep underline width at 100% when active */
+  }
+
