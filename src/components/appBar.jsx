@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar position="fixed" style={{ backgroundColor: '#353535', height: '80px' }}>
+      <AppBar position="sticky" style={{ backgroundColor: '#353535', height: '80px' }}>
         <Toolbar>
           {/* Logo */}
           <Box component="img" sx={{ height: 64, pt: '8px' }} alt="Your logo." src={logo} />
