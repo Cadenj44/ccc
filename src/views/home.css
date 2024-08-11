@@ -1,8 +1,11 @@
 h1 {
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed;
-    text-align: center;
-    padding-top: 30px;
-}
-
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
