@@ -67,8 +67,9 @@ export default function Navbar() {
             {/* Open Drawer */}
             <Box sx={{ 
               p: 2, 
-              height: '100%', 
+              height: '100vh', 
               backgroundColor: '#353535', 
+              padding: 0
               }}>
               <IconButton 
               sx={{ 

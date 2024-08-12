@@ -11,38 +11,6 @@ import Visitus from './views/visitus';
 import Onlinegiving from './views/onlinegiving';
 import Events from './views/events';
 import Blog from './views/blog';
-import notFound from './views/notFound';
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <Home />,
-//     errorElememt: <notFound />
-//   },
-//   {
-//     path: '/aboutus',
-//     element: < Aboutus />
-//   },
-//   {
-//     path: '/sermons',
-//     element: <Sermons />
-//   },
-//   {
-//     path: '/events',
-//     element: <Events />
-//   },
-//   {
-//     path: '/onlinegiving',
-//     element: <Onlinegiving />
-//   },
-//   {
-//     path: '/visitus',
-//     element: <Visitus />
-//   },
-//   {
-//     path: '/blog',
-//     element: <Blog />
-//   },
-// ]);
 
 const router = createBrowserRouter([
   {
