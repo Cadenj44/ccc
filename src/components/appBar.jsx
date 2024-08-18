@@ -20,7 +20,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-      <AppBar position="sticky" style={{ backgroundColor: '#353535', height: '80px' }}>
+      <AppBar position="fixed" style={{ backgroundColor: 'transparent', boxShadow: 'none' }}>
         <Toolbar>
           {/* Logo */}
           <Box component="img" sx={{ height: 64, pt: '8px' }} alt="Your logo." src={logo} />
@@ -32,6 +32,7 @@ export default function Navbar() {
               justifyContent: 'flex-end',
               flexGrow: 1,  // Ensure this Box takes up all available space
               alignItems: 'center',
+          
             }}
           >
             <NavLink to='/' className={`link ${location.pathname === '/' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Home</NavLink>
@@ -63,24 +64,32 @@ export default function Navbar() {
             anchor="right"
             open={open}
             onClose={toggleDrawer(false)}
+            PaperProps={{
+              sx: {
+                backgroundColor: 'rgba(53, 53, 53, 0.5)', // Transparent background
+                backdropFilter: 'blur(8px)',              // Blur effect for the drawer
+              }
+            }}
           >
             {/* Open Drawer */}
             <Box sx={{ 
               p: 2, 
               height: '100vh', 
-              backgroundColor: '#353535', 
+              color: 'transparent',
+              boxShadow: 'none',
               padding: 0
               }}>
               <IconButton 
               sx={{ 
                 mb: 2,
-                color: 'white',
+                color: '#ffffff',
               }} onClick={toggleDrawer(false)}>
                 <CloseIcon />
               </IconButton>
               <Divider sx={{ mb: 2 }} />
               <Box sx={{ 
                 display: 'flex',
+                color: 'transparent',
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '30px',

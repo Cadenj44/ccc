@@ -1,8 +1,8 @@
   .link {
     background-image: linear-gradient(
       to right,
-      #FD9623,
-      #FD9623 50%,
+      #ffffff,
+      #ffffff 50%,
       #ffffff 50%
     );
     background-size: 200% 100%;
@@ -18,7 +18,7 @@
   
   .link:before {
     content: '';
-    background: #FD9623;
+    background: #ffffff;
     display: block;
     position: absolute;
     bottom: -3px;
@@ -38,7 +38,7 @@
 
   .link.active {
     background-position: 0;
-    -webkit-text-fill-color: #FD9623; /* Keep text color */
+    -webkit-text-fill-color: #ffffff; /* Keep text color */
   }
 
   .link.active:before {
