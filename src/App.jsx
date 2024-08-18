@@ -3,6 +3,8 @@ import './App.css';
 import Navbar from './components/appBar';
 import { Outlet } from 'react-router-dom';
 
+
+
 function App() {
   return (
     <div> 

@@ -1,16 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Home from './views/home';
 import Aboutus from './views/aboutus';
 import Sermons from './views/sermons';
+import Home from './views/home';
 import Visitus from './views/visitus';
 import Onlinegiving from './views/onlinegiving';
 import Events from './views/events';
 import Blog from './views/blog';
+
+// Fonts
+import './fonts/HelveticaNeueBlack.ttf';
+import { CssBaseline } from '@mui/material';
+
+
+const theme = createTheme({
+  typography: {
+    fontFamily: 'helvetica-black'
+  },
+});
 
 const router = createBrowserRouter([
   {
@@ -53,7 +65,10 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+    <CssBaseline /> 
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

@@ -1,9 +1,9 @@
 h1 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
     line-height: 1.2;
   }
-  
+
   @media (max-width: 600px) {
     h1 {
       font-size: 2rem;

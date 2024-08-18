@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: "helvetica-black";
+  src: local("HelveticaNeueBlack"),
+    url(./fonts/HelveticaNeueBlack.ttf) format("ttf");
+}

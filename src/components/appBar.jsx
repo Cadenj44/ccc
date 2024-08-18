@@ -32,7 +32,7 @@ export default function Navbar() {
               justifyContent: 'flex-end',
               flexGrow: 1,  // Ensure this Box takes up all available space
               alignItems: 'center',
-          
+              height: 50, pt: '20px'
             }}
           >
             <NavLink to='/' className={`link ${location.pathname === '/' ? 'active' : ''}`} style = {{ marginLeft: '16px' }}>Home</NavLink>
