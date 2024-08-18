@@ -1,8 +1,26 @@
 h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: bold;
     line-height: 1.2;
   }
+
+.vision {
+  font-size: 4.5rem;
+  font-weight: bold;
+  color: white;
+}
+
+.vision-text {
+  font-size: 25px;
+  max-width: 1100px;
+  padding-right: 25px;
+  padding-left: 25px;
+  color: white;
+}
+
+h2 {
+  font-weight: bolder
+}
 
   @media (max-width: 600px) {
     h1 {

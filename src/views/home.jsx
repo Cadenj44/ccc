@@ -1,59 +1,71 @@
 import * as React from 'react';
-import './home.css';
 import { Box } from '@mui/material';
 import bgImage from '../assets/bible.jpg';
 import cloud from '../assets/cloud.jpg';
- 
+import './home.css';
+import Footer from '../components/footer';
+
 function Home() {
     return (
-      <Box>
-        <Box
-        sx={{
-          backgroundImage: `url(${bgImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 20%',  // Shift the image down slightly
-          height: '100vh',  // Full viewport height
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          color: '#ffffff',    // White text color
-          textAlign: 'center',
-          paddingTop: '200px'
-        }}
-        >
-          <h1 style={{ marginTop: '-5%'}}>
-              LOVE GOD. <br/>
-              LOVE ONE ANOTHER. <br/>
-              MAKE DISCIPLES. <br />
-          </h1>
-        </Box>
-        <Box
-          sx={{
-            backgroundImage: `url(${cloud})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',  // Shift the image down slightly
-            height: '100vh',  // Full viewport height
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            color: '#ffffff',    // White text color
-            textAlign: 'center',
-          }}>
-          <Box >  
-            <h1>Our Vision</h1>
-          </Box>
-            <Box sx={{color: '#000000'}}>
-              <h3>
-                Central Christian Church is a non-denominational, elder-led, Christian Church. <br />
-                We are a congregation comprised of a rich and diverse array of backgrounds, joining together to worship as one body. <br />
-                We unite for the common goal of community, encouragement and teaching. <br />
-                Our services are not the focus of our church; we are centered around people and not programs. <br />
-              </h3>
+        <Box>
+            <Box
+                sx={{
+                    backgroundImage: `url(${bgImage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center 20%',
+                    height: '100vh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    color: '#ffffff',
+                    padding: '10vh 5%',
+                }}
+            >
+                <h1 className='main-text'>
+                    LOVE GOD.<br />
+                    LOVE ONE ANOTHER.<br />
+                    MAKE DISCIPLES.
+                </h1>
             </Box>
-         </Box> 
-      </Box>
+
+            <Box
+                sx={{
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(${cloud})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    height: '100vh',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    padding: '5vh 5%',
+                    textAlign: 'center',
+                }}>
+                <Box 
+                    sx={{
+                        maxWidth: '90%',
+                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                        padding: '20px',
+                        borderRadius: '8px',
+                    }}>
+                    <h1 className='vision'>
+                      <span style={{
+                        borderBottom: '2px solid white',
+                        paddingBottom: '5px',
+                      }}> 
+                      Our Vision
+                      </span>
+                      </h1>
+                    <h3 className='vision-text'>
+                        We unite for the common goal of community, encouragement, and teaching.<br />
+                        Our services are centered around people, not programs.<br />
+                        "By this everyone will know that you are my disciples, if you love one another.” John 13:35
+                    </h3>
+                </Box>
+            </Box>
+        </Box>
     );
-  }
-  
-  export default Home;
+}
+
+export default Home;
+
