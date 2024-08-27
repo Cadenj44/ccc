@@ -1,16 +1,68 @@
-import React, { useState } from 'react';
-import { Box, Typography, TextField, Button, IconButton } from '@mui/material';
+import React, { useRef, useState } from 'react';
+import { Box, Typography, TextField, Button, IconButton, Snackbar, Alert } from '@mui/material';
+import emailjs from 'emailjs-com';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 
 export default function Footer() {
+  const form = useRef();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = { name: '', email: '', message: '' };
+
+    if (!name) {
+      newErrors.name = 'Name is required';
+      valid = false;
+    }
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = 'Valid email is required';
+      valid = false;
+    }
+    if (!message) {
+      newErrors.message = 'Message is required';
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add logic to handle form submission
+    if (validateForm()) {
+      setIsSubmitting(true);
+
+      emailjs.sendForm('service_z5au1bg', 'template_5rxih0f', form.current, 'SM9jySNuwA40191O_')
+        .then(() => {
+          console.log('SUCCESS!');
+          setSnackbarMessage('Message sent successfully!');
+          setOpenSnackbar(true);
+          // Clear form fields
+          setName('');
+          setEmail('');
+          setMessage('');
+          setErrors({ name: '', email: '', message: '' });
+          setIsSubmitting(false);
+        }, (error) => {
+          console.log('FAILED...', error.text);
+          setSnackbarMessage('Failed to send message. Please try again.');
+          setOpenSnackbar(true);
+          setIsSubmitting(false);
+        });
+    }
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   return (
@@ -65,42 +117,58 @@ export default function Footer() {
       </Box>
 
       {/* Message Form */}
-      <Box 
-        component="form" 
-        onSubmit={handleSubmit} 
-        sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '10px',
-          maxWidth: '400px',
-          width: '100%',
-          marginTop: { xs: '20px', md: '0' },
-        }}
-      >
+      <Box component="form" ref={form} onSubmit={handleSubmit} sx={{ width: '50%' }}>
         <TextField
-          variant="filled"
+          label="Your Name"
+          variant="outlined"
+          fullWidth
+          name="user_name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          sx={{ mb: 2, backgroundColor: '#fff', borderRadius: '4px', borderColor: errors.name ? 'red' : 'green' }}
+          helperText={errors.name}
+          error={!!errors.name}
+        />
+        <TextField
           label="Your Email"
+          variant="outlined"
+          fullWidth
+          name="user_email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          sx={{ backgroundColor: 'white', borderRadius: '5px' }}
+          sx={{ mb: 2, backgroundColor: '#fff', borderRadius: '4px', borderColor: errors.email ? 'red' : 'green' }}
+          helperText={errors.email}
+          error={!!errors.email}
         />
         <TextField
-          variant="filled"
           label="Your Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          variant="outlined"
+          fullWidth
           multiline
           rows={4}
-          sx={{ backgroundColor: 'white', borderRadius: '5px' }}
+          name="message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          sx={{ mb: 2, backgroundColor: '#fff', borderRadius: '4px', borderColor: errors.message ? 'red' : 'green' }}
+          helperText={errors.message}
+          error={!!errors.message}
         />
-        <Button 
-          variant="contained" 
-          type="submit"
-          sx={{ backgroundColor: '#FD9623', color: 'white', alignSelf: 'flex-start' }}
-        >
-          Send Message
+        <Button type="submit" variant="contained" color="primary" fullWidth disabled={isSubmitting}>
+          {isSubmitting ? 'Sending...' : 'Send Message'}
         </Button>
       </Box>
+
+      {/* Success Snackbar */}
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbarMessage.includes('Failed') ? 'error' : 'success'}>
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }
+
